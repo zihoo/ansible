@@ -299,7 +299,7 @@ class ConsoleCLI(CLI, cmd.Cmd):
     def do_become(self, arg):
         """Toggle whether plays run with become"""
         if arg:
-            self.options.become_user = arg
+            self.options.become = arg
             display.v("become changed to %s" % self.options.become)
             self.set_prompt()
         else:
