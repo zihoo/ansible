@@ -116,7 +116,7 @@ class ConsoleCLI(CLI, cmd.Cmd):
         login_user = self.options.remote_user or getpass.getuser()
         self.selected = self.inventory.list_hosts(self.options.cwd)
         prompt = "%s@%s (%d)[f:%s]" % (login_user, self.options.cwd, len(self.selected), self.options.forks)
-        if self.options.become and self.options.become_user in [None, 'root']:
+        if self.options.become and self.options.become == 'yes' and self.options.become_user in [None, 'root']:
             prompt += "# "
             color = C.COLOR_ERROR
         else:
@@ -441,4 +441,3 @@ class ConsoleCLI(CLI, cmd.Cmd):
         atexit.register(readline.write_history_file, histfile)
         self.set_prompt()
         self.cmdloop()
-
